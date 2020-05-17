@@ -1,31 +1,29 @@
-// Requiring necessary npm packages
-const express = require('express');
-const session = require('express-session');
-// Requiring passport as we've configured it
-const passport = require('./config/passport');
+var express = require("express");
+var bodyParser = require("body-parser");
+var exphbs = require("express-handlebars");
 
-// Setting up port and requiring models for syncing
-const PORT = process.env.PORT || 8080;
-const db = require('./models');
+var app = express();
 
-// Creating express app and configuring middleware needed for authentication
-const app = express();
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-app.use(express.static('public'));
-// We need to use sessions to keep track of our user's login status
-app.use(session({secret:
-  'keyboard cat', resave: true, saveUninitialized: true}));
-app.use(passport.initialize());
-app.use(passport.session());
+var PORT = process.env.PORT || 8080;
 
-// Requiring our routes
-require('./routes/html-routes.js')(app);
-require('./routes/api-routes.js')(app);
+// Serve static content for the app from the "public" directory in the application directory.
+app.use(express.static("public"));
 
-// Syncing our database and logging a message to the user upon success
-db.sequelize.sync().then(function() {
-  app.listen(PORT, function() {
-    console.log('==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.', PORT, PORT);
+// Parse application body as JSON
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+// Set Handlebars.
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
+// Import routes and give the server access to them.
+var routes = require("./controllers/destinations_controller.js");
+app.use(routes);
+
+
+
+app.listen(PORT, function() {
+    // Log (server-side) when our server has started
+    console.log("Server listening on: http://localhost:" + PORT);
   });
-});
