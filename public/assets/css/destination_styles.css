@@ -1,0 +1,58 @@
+.jumbotron {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: white;
+  color: #ffffff;
+  margin-top: 3%;
+}
+.info {
+  /* background-image: url("../img/background.jpg");
+  background-repeat: no-repeat; */
+  background-position: right;
+  /* background-color: #439dbd; */
+  color: dimgray;
+  margin-top: 3%;
+}
+/* #map {
+  height: 500px;
+} */
+#find {
+  background-color: #de521f;
+  color: #ffffff;
+}
+#search {
+  background-color: #439dbd;
+  color: #ffffff;
+}
+#wish {
+  background-color: #273f22;
+  color: #ffffff;
+}
+#destinationbtn {
+  background-color: lightgray;
+}
+#trashbutton{
+  background-color: lightgray;
+}
+#leftside {
+  background-color: #225972;
+  color: white;
+  text-align: center;
+  font-size: 1.3em;
+}
+#rightside {
+  background-color: #ec7a4b;
+  color: white;
+  text-align: center;
+  font-size: 1.3em;
+}
+#profile {
+  font-size: small;
+}
+#picture {
+  margin-bottom: 20px;
+}
+#picture img {
+  margin: 10px;
+}

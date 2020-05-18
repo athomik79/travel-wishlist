@@ -1,0 +1,130 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1 class="display-3"><strong>TRAVEL WISHLIST</strong></h1>
+        <p class="lead">Search for Destinations.
+        <br>
+        Add them to your Wishlist or Travel Journal.</p>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    {{!-- <label for="newdestination">Choose a Destination</label> --}}
+                    <input type="text" placeholder="Search for a City" id="search_term" class="form-control mt-3"
+                        name="destination">
+                    {{!-- <button type="submit" class="btn" id="find">
+                      <span class="fas fa-map-marker-alt">My Location</span>
+                  </button> --}}
+                    <button type="button" class="btn mt-3" id="search">
+                        <span class="fas fa-search"> Search</span>
+                    </button>
+                    {{!-- <button type="submit" class="btn mt-3" id="wish">
+                        <span class="fas fa-map-marked-alt"> Wishlist</span>
+                    </button> --}}
+                </div>
+            </form>
+            {{!-- <div id="map">Location Map</div> --}}
+        </panel>
+    </div>
+
+   {{!-- Appending Info from API --}}
+  
+ <div id="results" class="hide">
+        <div class="mb-4 card">
+            <h5 class="card-header">
+                Destination Information
+            </h5>
+                <div class="mb-1 card-body"><h3 class="card-title" id="city"></h5>
+                        <div class="row">
+                            <div class="col">
+                                <div class="bs-example">
+                                    <ul class="nav nav-tabs" id="myTab">
+                                        <li class="nav-item">
+                                            <a href="#home" class="nav-link" data-toggle="tab">Overview</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#profile" class="nav-link" data-toggle="tab">Background</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#messages" class="nav-link" data-toggle="tab">Images</a>
+                                        </li>
+                                    </ul>
+                                    <div class="tab-content">
+                                        <div class="tab-pane fade" id="home">
+                                            <p class="mt-2"></p>
+                                                <div class="col-md-auto image-wrapper float-right pl-3" id="image-display">
+                           {{!-- This is where the thumbnail images will display --}}
+                                                </div>  
+                                        </div>
+                                        <div class="tab-pane fade" id="profile">
+                                            <h4 class="mt-2">Background Information</h4>
+                                        </div>
+                                        <div class="tab-pane fade" id="messages">
+                                            <h4 class="mt-2">Photos of Popular Sights</h4>
+                                            <div id="picture">                                                
+                                             </div>
+                                             <div id="messages">                                                
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                
+                        </div>
+                        <button type="submit" class="btn mt-3" id="wish">
+                        <span class="fas fa-map-marked-alt"> Add to Wishlist</span>
+                    </button>
+                </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="card card-default">
+                <div class="card-header" id="leftside"><strong>My Travel Wishlist</strong>
+                    {{!-- <p>Send order when you're ready</p> --}}
+                </div>
+
+                <div class="card-body">
+
+                    <ul>
+                        {{#each destinations}}
+                        {{#unless travelled}}
+
+                        <span><strong> {{this.id}} - {{this.destination_name}}</strong></span>
+                        <button type="button" class="destination-btn btn-warning" id="destinationbtn"
+                            data-id="{{this.id}}" data-newTravelled="{{travel}}"><span
+                                class="fas fa-passport"></span></button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="card card-default">
+                <div class="card-header" id="rightside"><strong>My Travel Journal</strong>
+                </div>
+
+                <div class="card-body">
+
+                    <ul>
+                        {{#each destinations}}
+                        {{#if travelled}}
+                        <span><strong> {{this.id}} - {{this.destination_name}}</strong></span>
+                        <button type="button" class="trashdestination btn" id="trashbutton" data-id="{{this.id}}"
+                            data-newTravelled="{{travel}}"><span class="fas fa-suitcase"></span></button>
+                        <hr>
+                        {{/if}}
+                        {{/each}}
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--endrow -->
+</div>
+<!--enccontainer -->
