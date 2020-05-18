@@ -23,6 +23,7 @@ function createQmarks(num) {
  */
 function translateSql(ob) {
   const arr = [];
+  // eslint-disable-next-line guard-for-in
   for (const key in ob) {
     let value = ob[key];
     if (Object.hasOwnProperty.call(ob, key)) {

@@ -1,6 +1,8 @@
+
 const express = require('express');
 // Import the model (destination.js) to use its database functions.
 const destination = require('../models/destination.js');
+/* eslint new-cap: ["error", { "capIsNew": false }]*/
 const router = express.Router();
 
 // router connections

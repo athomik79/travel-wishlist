@@ -1,12 +1,16 @@
-document.getElementById('results').style.display = 'none';
+/* eslint-disable no-unused-vars */
+// document.getElementById('results').style.display = 'none';
 /**
  * This function autocompletes search bar terms
  *
  * @param {string} activatePlacesSearch - A string param
  */
 function activatePlacesSearch() {
+  const options = {
+    types: ['geocode'],
+  };
   const input = document.getElementById('search_term');
-  const autocomplete = new google.maps.places.Autocomplete(input);
+  const autocomplete = new google.maps.places.Autocomplete(input, options);
 }
 
 // Make sure we wait to attach our handlers until the DOM is fully loaded.
@@ -117,6 +121,11 @@ $('#search').click(function(event) {
     }).then(function(json) {
       console.log(json);
       console.log(json.results[0]);
+      if (json.results < [0]) {
+        alert('no results found for this city'); {
+          location.reload();
+        };
+      }
       //  console.log(json.response[0].snippet);
       //  var city = input;
       const name = json.results[0].name;
@@ -126,7 +135,7 @@ $('#search').click(function(event) {
       $('#messages').append(p);
     });
   }
-  document.getElementById('search_term').value = '';
+  // document.getElementById('search_term').value = "";
 });
 // }).then(response => {
 //   console.log(response);
