@@ -26,8 +26,9 @@
         </panel>
     </div>
 
-{{!-- Appending Info from API --}}
-    <div class="hide" id="results">
+   {{!-- Appending Info from API --}}
+  
+ <div id="results" class="hide">
         <div class="mb-4 card">
             <h5 class="card-header">
                 Destination Information
@@ -41,7 +42,7 @@
                                             <a href="#home" class="nav-link" data-toggle="tab">Overview</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a href="#profile" class="nav-link" data-toggle="tab">Sightseeing</a>
+                                            <a href="#profile" class="nav-link" data-toggle="tab">Background</a>
                                         </li>
                                         <li class="nav-item">
                                             <a href="#messages" class="nav-link" data-toggle="tab">Images</a>
@@ -55,11 +56,14 @@
                                                 </div>  
                                         </div>
                                         <div class="tab-pane fade" id="profile">
-                                            <h4 class="mt-2">Places to Visit</h4>
-                                            
+                                            <h4 class="mt-2">Background Information</h4>
                                         </div>
                                         <div class="tab-pane fade" id="messages">
                                             <h4 class="mt-2">Photos of Popular Sights</h4>
+                                            <div id="picture">                                                
+                                             </div>
+                                             <div id="messages">                                                
+                                             </div>
                                         </div>
                                     </div>
                                 </div>
@@ -67,7 +71,7 @@
                 
                         </div>
                         <button type="submit" class="btn mt-3" id="wish">
-                        <span class="fas fa-map-marked-alt"> Wishlist</span>
+                        <span class="fas fa-map-marked-alt"> Add to Wishlist</span>
                     </button>
                 </div>
         </div>

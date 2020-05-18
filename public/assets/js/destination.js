@@ -69,7 +69,8 @@ $(document).ready(function() {
 // $("#results").empty();
 $('#search').click(function(event) {
   console.log($('#select').attr('id'));
-  $('#results').addClass('show');
+  // $('#results').addClass('show');
+  // document.getElementById("results").style.display = "block";
   event.preventDefault();
   const entry = $('#search_term').val().split(',')[0].split(' ');
   const result = [];
@@ -84,58 +85,112 @@ $('#search').click(function(event) {
   // var city = entry.charAt(0).toUpperCase() + entry.slice(1);
   // console.log(city)
   if (city) {
-    const queryURL = 'https://www.triposo.com/api/20200405/poi.json?location_id='+city+'&count=10&fields=id,name,images,score,snippet&account=ORID4DVT&fields=all&token=9mzqr3x3hr2juisyaz7mfqmsezfooz85';
-    const poiURL = 'https://www.triposo.com/api/20200405/poi.json?location_id='+city+'&tag_labels=sightseeing&order_by=-score&count=10&account=ORID4DVT&fields=all&token=9mzqr3x3hr2juisyaz7mfqmsezfooz85';
+    // eslint-disable-next-line no-var
+    var queryURL = 'https://www.triposo.com/api/20200405/location.json?id='+city+'&account=ORID4DVT&token=9mzqr3x3hr2juisyaz7mfqmsezfooz85&fields=all';
+    // eslint-disable-next-line no-var
+    var poiURL = 'https://www.triposo.com/api/20200405/poi.json?location_id='+city+'&tag_labels=sightseeing&order_by=-score&count=10&account=ORID4DVT&fields=all&token=9mzqr3x3hr2juisyaz7mfqmsezfooz85';
+  }
 
-    $.ajax({
-      url: queryURL,
-      method: 'GET',
-      dataType: 'json',
-    }).then(function(json) {
-      console.log(json);
-      console.log(json.results[0].snippet);
-      //  console.log(json.response[0].snippet);
-      //  var city = input;
-      const snippet = json.results[0].snippet;
-      const imageURL = json.results[0].images[0].sizes.thumbnail.url;
-      const sectionBody = json.results[0].content.sections[0].body;
-      const d = $('<li>');
-      const h = $('<h3>');
-      const p = $('<p>');
-      const g = $('<p>');
-      const image = $('<img>').attr('src', imageURL);
-      // var image = $("<img style='float:right'"). attr("src", imageURL);
-      p.append(snippet);
-      $('#home').append(p);
+  $.ajax({
+    url: queryURL,
+    method: 'GET',
+    dataType: 'json',
+  }).then(function(json) {
+    console.log(json);
+    console.log(json.results[0].snippet);
+    //  console.log(json.response[0].snippet);
+    //  var city = input;
+    const imageURL = json.results[0].images[1].sizes.thumbnail.url;
+    const image = $('<img>').attr('src', imageURL);
+
+    const intro = json.results[0].intro;
+    // var thumbURL = json.results[0].images[0].sizes.thumbnail.url;
+    const d = $('<div>');
+    const h = $('<h3>');
+    const p = $('<p>');
+    const g = $('<p>');
+    // var g = $("<p>");
+    //  var image = $("<img style='float:right'"). attr("src", imageURL);
+    $('#home').html('');
+    p.append(intro);
+    $('#home').append(p);
+    g.append(image);
+    $('#image-display').append(g);
+
+
+    // var thumbnail = $("<img>").attr("src", thumbURL);
+    // d.append(thumbnail);
+    // $("#image-display").append(d);
+
+
+    // Loop for image on home tab
+    // for (var i = 0; i < 1; i++) {
+    // var imageURL = json.results[0].images[0].sizes.thumbnail.url;
+    // var image = $('<img>').attr('src', imageURL);
+    // var g = $('<p>');
+    g.append(image);
+    $('#home').append(g);
+    // $("#image-display").append(g);
+    // }
+    $('#profile').html('');
+    // Loop for info for Background tab
+    for (let i = 0; i < 10; i++) {
+      const sectionBody = json.results[0].content.sections[i].body;
+      const d = $('<p>');
       d.append(sectionBody);
       $('#profile').append(d);
-      g.append(image);
-      $('#image-display').append(g);
-      h.append(city);
-      $('#city').append(h);
-    });
-    $.ajax({
-      url: poiURL,
-      method: 'GET',
-      dataType: 'json',
-    }).then(function(json) {
-      console.log(json);
-      console.log(json.results[0]);
-      if (json.results < [0]) {
-        alert('no results found for this city'); {
-          location.reload();
-        };
-      }
-      //  console.log(json.response[0].snippet);
-      //  var city = input;
+    }
+    // Loop for photos page
+    $('#picture').html('');
+    for (let i = 0; i < json.results[0].images.length; i++) {
+      const image = $('<img>').attr(
+          'src',
+          json.results[0].images[i].sizes.thumbnail.url,
+      );
+      const f = $('#picture');
+      f.append(image);
+    }
+    // updates City name each time a new search is performed
+    $('#city').html('');
+
+    // Name of city selection at the top of destination info div
+    h.append(city);
+    $('#city').append(h);
+  });
+  $.ajax({
+    url: poiURL,
+    method: 'GET',
+    dataType: 'json',
+  }).then(function(json) {
+    console.log(json);
+    console.log(json.results[0]);
+    if (json.results < [0]) {
+      alert('No results found for this city. Enter in new destination.');
+      location.reload();
+    };
+    // Loop for captions of photos
+    for (let i = 0; i < 1; i++) {
       const name = json.results[0].name;
       const p = $('<p>');
-      //   var image = $("<img>").attr("src", imageURL);
       p.append(name);
       $('#messages').append(p);
-    });
-  }
-  // document.getElementById('search_term').value = "";
+    }
+    // Loop for Photos tab
+    // for (var i = 0; i < 10; i++) {
+    // var image2URL = json.results[0].images[i].sizes.medium.url;
+    //  var d = $("<p>");
+    //  var image2 = $("<img>").attr("src", image2URL);
+    //  d.append(image2);
+    //  $("#picture").append(d);
+    //  }
+
+
+    const image = $('<img>').attr('src', image2URL);
+
+    p.append(image);
+    $('#picture').append(p);
+  });
+// document.getElementById("search_term").value = "";
 });
 // }).then(response => {
 //   console.log(response);
