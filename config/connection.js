@@ -1,21 +1,17 @@
 // Set up MySQL connection.
 const mysql = require('mysql');
+let connection;
 
-/* if (process.env.JAWSDB_URL) {
+if (process.env.JAWSDB_URL) {
   connection = mysql.createConnection(process.env.JAWSDB_URL);
-} else {*/
-const connection = mysql.createConnection({
-  host: 'qn66usrj1lwdk1cc.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
-  user: 'ygn20zzf979q538m',
-  password: 'm8j3oebonmtvoke2',
-  database: 'r59dc9r6wkaytxce'});
-// }
+} else {
+  connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'Cal_mel@1013',
+    database: 'destinations_db',
+  });
+}
 
-connection.connect(function(err) {
-  if (err) {
-    console.error('error connecting: ' + err.stack);
-    return;
-  }
-  console.log('connected as id ' + connection.threadId);
-});
+connection.connect();
 module.exports = connection;
