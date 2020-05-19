@@ -3,17 +3,18 @@
 
 <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
 
-<img src="https://avatars.githubusercontent.com/u/55367871?" height="60px" width="60px">
 ### athomik79
+<img src="https://avatars.githubusercontent.com/u/55367871?" height="60px" width="60px">
 
-<img src="https://avatars1.githubusercontent.com/u/38888185?" height="60px" width="60px">
 ### mtgovern
+<img src="https://avatars1.githubusercontent.com/u/38888185?" height="60px" width="60px">
 
-<img src="https://avatars0.githubusercontent.com/u/58796152?" height="60px" width="60px">
 ### Oyuka100
+<img src="https://avatars0.githubusercontent.com/u/58796152?" height="60px" width="60px">
 
-<img src="https://avatars0.githubusercontent.com/u/59346425?" height="60px" width="60px">
 ### rfazily
+<img src="https://avatars0.githubusercontent.com/u/59346425?" height="60px" width="60px">
+
 
 
 ### Project Title:
