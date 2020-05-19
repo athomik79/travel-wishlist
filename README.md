@@ -38,14 +38,14 @@ Here's a link to the deployed app:
 Use the search bar to search for a city. When you click the 'Search' button, results will appear in the destination information area for this city if they are available. If you would like to add the city to your wishlist, click the 'Add to Wishlist' button. Once you have visited a city from your wishlist, you can add it to your travel journal, by clicking the 'Passport' button.
 
 ### Future Improvements:
-*Add additional APIs:
-    *Ticketing/booking information
-    *Things to do/Tours
-    *Hotels and Accomodations
-*Print/Save Trip and Travel Journal Lists:
-    *Share lists on Social Media
-    *Link to display location information from wishlist
-*User authentication
+* Add additional APIs:
+    * Ticketing/booking information
+    * Things to do/Tours
+    * Hotels and Accomodations
+* Print/Save Trip and Travel Journal Lists:
+    * Share lists on Social Media
+    * Link to display location information from wishlist
+* User authentication
 
 ### License:
 
