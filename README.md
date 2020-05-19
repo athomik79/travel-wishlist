@@ -3,6 +3,8 @@
 
 <img src="https://img.shields.io/badge/License-MIT-yellow.svg">
 
+## Contributors:
+
 ### athomik79
 <img src="https://avatars.githubusercontent.com/u/55367871?" height="60px" width="60px">
 
@@ -47,10 +49,6 @@ Use the search bar to search for a city. When you click the 'Search' button, res
 ### License:
 
 MIT
-
-### Contributing:
-
-athomik79, mtgovern, Oyuka100, rfazily
 
 ### Tests:
 
